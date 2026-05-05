@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const peliculasController = require("./src/controllers/peliculasController");
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -16,9 +17,10 @@ const peliculasRouter = require("./src/routes/peliculas");
 app.use("/api/peliculas", peliculasRouter);
 // Añade en index.js junto a los demás routers:
 const authRouter = require("./src/routes/auth");
+const estadisticasRoutes = require("./routes/estadisticas");
 
 app.use("/api/auth", authRouter);
-
+app.use("/api/estadisticas", estadisticasRoutes);
 // Ruta de estadísticas
 app.get("/api/estadisticas", peliculasController.obtenerEstadisticas);
 
